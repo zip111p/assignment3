@@ -1,7 +1,7 @@
 # Minimum Spanning Tree Algorithms — Project Report
 
-**Student:** [Your Full Name]  
-**Group:** [Your Group Number]  
+**Student:** Yelzhan Zhandos 
+**Group:** SE-2426
 
 ## 1. Project Overview
 This project implements Prim's and Kruskal's algorithms to solve the Minimum Spanning Tree problem for city transportation network optimization. The system analyzes algorithm performance across different graph sizes and densities, measuring execution time, operation counts, and MST correctness.
