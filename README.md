@@ -2,7 +2,7 @@
 ## Minimum Spanning Tree Algorithms Implementation
 
 ### Project Overview
-This project implements **Prim's** and **Kruskal's** algorithms to solve the Minimum Spanning Tree (MST) problem for optimizing city transportation networks. The system determines the most cost-effective set of roads that connect all city districts while minimizing total construction costs.
+This project implements Prim's and Kruskal's algorithms to solve the Minimum Spanning Tree (MST) problem for optimizing city transportation networks. The system determines the most cost-effective set of roads that connect all city districts while minimizing total construction costs.
 
 ### Objective
 - Model city districts as graph vertices and potential roads as weighted edges
@@ -11,171 +11,92 @@ This project implements **Prim's** and **Kruskal's** algorithms to solve the Min
 - Analyze algorithmic behavior across different graph sizes and densities
 
 ### Project Structure
+```
 assignment_3/
 │
-├──  mst_assignment.py # Main Python implementation
-├──  requirements.txt # Project dependencies
-├──  assign_3_input.json # Generated test datasets (auto)
-├──  assign_3_output.json # Algorithm results (auto)
-├──  comparison_table.csv # Performance comparison (auto)
-├──  README.md # Project documentation
-├──  sample_input_structure.json # Input format example
+├── MSTAlgorithms.java # Main algorithm implementations
+├── Graph.java # Graph data structure
+├── Edge.java # Edge representation
+├── UnionFind.java # Union-Find for Kruskal's
+├── GraphGenerator.java # Test data generation
+├── MSTTest.java # JUnit test suite
+├── Main.java # Main execution class
+├── README.md # Project documentation
+├── pom.xml # Maven configuration
 │
-├──  java/ # Bonus Java implementation
-│ ├── Graph.java
-│ ├── Edge.java
-│ └── MSTMain.java
+├── input/ # Input datasets
+│ ├── small_graphs.json
+│ ├── medium_graphs.json
+│ └── large_graphs.json
 │
-└──  report/ # Analysis report
-├── performance_analysis.pdf
-└── algorithm_comparison.docx
+└── output/ # Analysis results
+├── results.json
+├── comparison.csv
+└── performance_report.txt
 
-text
+```
 
-###  Installation & Setup
+### Quick Start
 
-#### Python Environment
-```bash
-# Clone or download the project files
-# Navigate to project directory
-cd assignment_3
+#### Compilation
 
-# Verify Python version (3.7+ required)
-python --version
+# Compile all Java files
+javac *.java
 
-# No external dependencies needed - uses only standard library
-Java Bonus (Optional)
-bash
-cd java
-javac Graph.java Edge.java MSTMain.java
-java MSTMain
- How to Run
-Complete Analysis
-bash
-python mst_assignment.py
-This will:
+# Or use Maven
+mvn compile
+Execution
+# Run complete analysis
+java Main
 
- Generate test datasets of various sizes
+# Run specific graph size only
+java Main --size small
 
- Run both MST algorithms on all graphs
-
- Measure performance metrics and operation counts
-
- Generate output files and comparison tables
-
- Run automated tests
-
- Display comprehensive summary
-
-Run Tests Only
-bash
-python -m unittest mst_assignment.MSTTest -v
-Specific Graph Testing
-python
-# Custom testing example
-from mst_assignment import Graph, MSTAlgorithms
-
-# Create custom graph
-edges = [(0, 1, 4), (0, 2, 1), (1, 2, 2), (1, 3, 5)]
-graph = Graph(4, edges)
-
-# Run algorithms
-prim_result = MSTAlgorithms.prims_algorithm(graph)
-kruskal_result = MSTAlgorithms.kruskals_algorithm(graph)
- Test Datasets
-The system automatically generates 4 categories of graphs:
+# Run performance tests only
+java -cp .:junit.jar org.junit.runner.JUnitCore MSTTest
+Test Datasets
+The system generates 4 categories of graphs:
 
 Category	Graphs	Vertices	Edges	Purpose
 Small	5	4-6	5-10	Correctness verification
 Medium	10	10-15	15-30	Moderate performance testing
 Large	10	20-35	35-100	Scalability analysis
 Extra Large	3	1000-2000	1500-2500	Efficiency testing
- Output Metrics
+Output Metrics
 For each algorithm and graph, the system records:
 
 Correctness Metrics
- MST edges list with weights
+MST edges list with weights
 
- Total construction cost
+Total construction cost
 
- Edge count verification (V-1 edges)
+Edge count verification (V-1 edges)
 
- Connectivity validation
+Connectivity validation
 
 Performance Metrics
- Execution time (milliseconds)
+Execution time (milliseconds)
 
- Operation counts:
+Operation counts:
 
 Prim: comparisons, heap operations
 
 Kruskal: comparisons, union/find operations
 
- Memory usage patterns
+Memory usage patterns
 
- Algorithm efficiency ratios
+Algorithm efficiency ratios
 
 Comparison Metrics
- Cost equality between algorithms
+Cost equality between algorithms
 
- Time performance differences
+Time performance differences
 
- Operation efficiency analysis
+Operation efficiency analysis
 
- Scalability across graph sizes
+Scalability across graph sizes
 
- Automated Testing
-The test suite verifies:
-
-Correctness Tests
-python
-def test_mst_cost_equality()          # Prim and Kruskal produce same cost
-def test_mst_edge_count()             # MST has exactly V-1 edges
-def test_mst_connectivity()           # All vertices connected
-def test_mst_acyclic()                # No cycles in MST
-def test_empty_graph_handling()       # Edge case handling
-Performance Tests
-python
-def test_execution_time_measurement() # Time measurement accuracy
-def test_operation_counts()           # Operation counting validity
-def test_consistency()               # Reproducible results
- Generated Files
-Input Data (assign_3_input.json)
-json
-{
-  "small_graphs": [
-    {
-      "id": "small_1",
-      "vertices": 5,
-      "edges": 7,
-      "graph": [[0,1,4], [0,2,1], [1,2,2], ...]
-    }
-  ],
-  "medium_graphs": [...],
-  "large_graphs": [...],
-  "extra_large_graphs": [...]
-}
-Output Results (assign_3_output.json)
-json
-{
-  "small_graphs": [
-    {
-      "graph_id": "small_1",
-      "vertices": 5,
-      "edges": 7,
-      "prim_algorithm": {
-        "mst_edges": [[0,2,1], [2,1,2], ...],
-        "total_cost": 12,
-        "execution_time": 0.045,
-        "operation_count": 56
-      },
-      "kruskal_algorithm": {...}
-    }
-  ]
-}
-Comparison Table (comparison_table.csv)
-Category	GraphID	Vertices	Edges	Prim_Cost	Kruskal_Cost	Prim_Time_ms	Kruskal_Time_ms	...
- Algorithm Implementation Details
+Algorithm Implementation Details
 Prim's Algorithm
 Approach: Greedy algorithm building MST from starting vertex
 
@@ -194,7 +115,32 @@ Time Complexity: O(E log E)
 
 Best For: Sparse graphs, edge list representation
 
- Performance Analysis
+Automated Testing
+The test suite verifies:
+
+Correctness Tests
+testMSTCostEquality: Prim and Kruskal produce same cost
+
+testMSTEdgeCount: MST has exactly V-1 edges
+
+testMSTConnectivity: All vertices connected
+
+testMSTAcyclic: No cycles in MST
+
+testEmptyGraphHandling: Edge case handling
+
+Performance Tests
+testExecutionTimeMeasurement: Time measurement accuracy
+
+testOperationCounts: Operation counting validity
+
+testConsistency: Reproducible results
+
+
+Comparison Table (CSV format)
+| Category | GraphID | Vertices | Edges | Prim_Cost | Kruskal_Cost | Prim_Time_ms | Kruskal_Time_ms | Prim_Operations | Kruskal_Operations |
+
+Performance Analysis
 The system provides comprehensive analysis:
 
 Theoretical Comparison
@@ -212,96 +158,67 @@ Large Graphs: Kruskal's may excel with sparse graphs
 
 Extra Large: Implementation optimizations become critical
 
- Key Features
-Comprehensive Implementation
- Complete Prim's algorithm with priority queue
 
- Complete Kruskal's algorithm with Union-Find
-
- Operation counting for detailed analysis
-
- Memory-efficient data structures
-
-Robust Testing
- 20+ automated test cases
-
- Edge case handling (empty graphs, single vertex)
-
- Performance validation
-
- Correctness verification
-
-Analysis Tools
- Multiple graph generation strategies
-
- Performance measurement framework
-
- Comparative analysis output
-
- Scalability testing
-
- Usage Examples
-Basic Usage
-python
 # Generate and analyze all test cases
-python mst_assignment.py
+java Main
 Custom Analysis
-python
-from mst_assignment import GraphGenerator, MSTAlgorithms
+```
+// Generate specific graph
+Graph graph = GraphGenerator.generateConnectedGraph(10, 15);
 
-# Generate specific graph
-graph = GraphGenerator.generate_connected_graph(10, 15)
+// Compare algorithms
+MSTResult prim = MSTAlgorithms.primsAlgorithm(graph);
+MSTResult kruskal = MSTAlgorithms.kruskalsAlgorithm(graph);
 
-# Compare algorithms
-prim = MSTAlgorithms.prims_algorithm(graph)
-kruskal = MSTAlgorithms.kruskals_algorithm(graph)
-
-print(f"Prim: {prim['total_cost']} in {prim['execution_time']}ms")
-print(f"Kruskal: {kruskal['total_cost']} in {kruskal['execution_time']}ms")
- Customization
+System.out.printf("Prim: %d in %.3fms%n", prim.getTotalCost(), prim.getExecutionTime());
+System.out.printf("Kruskal: %d in %.3fms%n", kruskal.getTotalCost(), kruskal.getExecutionTime());
+Customization
 Modifying Graph Sizes
-Edit the create_comprehensive_test_datasets() method in GraphGenerator class:
+Edit the createComprehensiveTestDatasets() method in GraphGenerator class:
 
-python
-# Custom graph configurations
-custom_configs = {
-    "tiny_graphs": [(3, 3), (4, 4), (5, 6)],
-    "huge_graphs": [(5000, 8000), (10000, 15000)]
-}
+
+// Custom graph configurations
+Map<String, List<Graph>> customConfigs = new HashMap<>();
+customConfigs.put("tiny_graphs", Arrays.asList(
+    generateConnectedGraph(3, 3),
+    generateConnectedGraph(4, 4)
+));
 Adding New Metrics
 Extend the algorithm classes to track additional metrics:
 
-python
-def prims_algorithm_enhanced(graph):
-    # Add memory usage tracking
-    # Add cache performance metrics
-    # Add detailed step-by-step analysis
- Expected Results
+java
+public class EnhancedMSTAlgorithms {
+    // Add memory usage tracking
+    // Add cache performance metrics
+    // Add detailed step-by-step analysis
+} 
+```
+Expected Results
 Correctness Verification
- MST costs identical for both algorithms
+MST costs identical for both algorithms
 
- All MSTs have V-1 edges
+All MSTs have V-1 edges
 
- All MSTs are connected and acyclic
+All MSTs are connected and acyclic
 
- Consistent results across multiple runs
+Consistent results across multiple runs
 
 Performance Patterns
- Prim's excels with dense graphs
+Prim's excels with dense graphs
 
- Kruskal's excels with sparse graphs
+Kruskal's excels with sparse graphs
 
- Linear scaling with graph size
+Linear scaling with graph size
 
- Predictable operation counts
+Predictable operation counts
 
- Troubleshooting
+Troubleshooting
 Common Issues
 Memory errors with large graphs
 
 Solution: Use sparse data structures
 
-Increase Python heap size if needed
+Increase JVM heap size: java -Xmx2g Main
 
 Performance slower than expected
 
@@ -316,11 +233,10 @@ Verify: Graph generation logic
 Check: Union-Find implementation
 
 Debug Mode
-python
-# Enable detailed logging
-import logging
-logging.basicConfig(level=logging.DEBUG)
- Theoretical Background
+java 
+// Enable detailed logging
+System.setProperty("java.util.logging.config.file", "logging.properties");
+Theoretical Background
 Minimum Spanning Tree
 Connects all vertices with minimum total edge weight
 
@@ -335,7 +251,7 @@ Use Kruskal's when: Graph is sparse, edges are pre-sorted
 
 Considerations: Memory constraints, implementation complexity
 
- Team & Contribution
+Team & Contribution
 This implementation follows academic best practices:
 
 Clean, documented code
@@ -346,25 +262,12 @@ Performance optimization
 
 Academic integrity compliance
 
- License
+License
 Academic Use - Please adhere to your institution's honor code and citation requirements.
 
- References
+References
 Cormen, T. H., et al. "Introduction to Algorithms"
 
 Sedgewick, R., & Wayne, K. "Algorithms"
 
-Python Documentation: heapq, time, unittest modules
-
- Academic Integrity Notice: This implementation is provided for educational purposes. Students should understand the algorithms and be able to explain the implementation details during defense sessions.
-
-text
-
-This comprehensive README provides:
-- ✅ Complete setup and execution instructions
-- ✅ Detailed explanation of all features
-- ✅ Usage examples and customization guide
-- ✅ Theoretical background and performance analysis
-- ✅ Troubleshooting and academic guidelines
-
-The documentation is professional, thorough, and suitable for academic submission.
+Java Documentation: PriorityQueue, Collections, Arrays
