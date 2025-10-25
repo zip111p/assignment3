@@ -133,7 +133,7 @@ Execution time measurements (milliseconds) reveal clear performance patterns:
 | 24    | 25       | 90    | 0.089 ms  | 0.084 ms     | Kruskal | -5.6%      |
 | 25    | 27       | 105   | 0.089 ms  | 0.087 ms     | Kruskal | -2.2%      |
 
-**Table 5.4: Extra Large Graphs Performance (50-100 vertices)**
+**Table 5.4: Extra Large Graphs Performance (50-100 vertices)** |
 **Mixed results with Kruskal winning 2 out of 3 tests**
 
 | Graph ID | Vertices | Edges | Prim Time (ms) | Kruskal Time (ms) | Faster Algorithm | Performance Difference |
@@ -142,7 +142,7 @@ Execution time measurements (milliseconds) reveal clear performance patterns:
 | Graph 27 | 75 | 277 | 0.368 | 0.562 | Prim | +52.7% |
 | Graph 28 | 100 | 495 | 0.588 | 0.429 | Kruskal | -27.0% |
 
-**Table 5.5: Performance Summary by Graph Category**
+**Table 5.5: Performance Summary by Graph Category** |
 **Kruskal wins across all graph categories!**
 
 | Category | Avg Prim Time (ms) | Avg Kruskal Time (ms) | Performance Winner | Avg Speed Improvement |
