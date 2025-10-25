@@ -2,6 +2,33 @@
 **Student:** Yelzhan Zhandos  
 **Group:** SE-2426
 
+## 📊 Performance Results & Analysis
+
+### Overall Performance Summary
+![Performance Analysis](images/performance_analysis.png)
+
+**🔍 Why These Results Occurred:**
+- **Prim's Algorithm** shows consistent performance across all graph sizes because it uses a priority queue (heap) for efficient edge selection
+- **Kruskal's Algorithm** demonstrates better performance on medium-sized graphs due to efficient edge sorting and Union-Find data structure
+- **On very large graphs (XLarge)** Kruskal slows down because it requires sorting all edges before processing
+
+### Detailed Algorithm Comparison
+![Algorithm Data Comparison](images/comparison_alg_data.png)
+
+**📈 Key Observations:**
+- **Time Complexity:** Prim performs better on dense graphs, while Kruskal excels on sparse graphs
+- **Memory Usage:** Kruskal requires O(E) space for storing edges, while Prim needs O(V) for the priority queue
+- **Implementation Factors:** The performance difference is influenced by the specific graph representation and data structures used
+
+### Average Performance by Category
+![Average Comparison](images/comparison_avg.png)
+
+**📊 Performance Patterns:**
+- **Small Graphs (5-6 vertices):** Both algorithms perform well, with Kruskal having a slight advantage
+- **Medium Graphs (10-15 vertices):** Kruskal shows significant speedup due to efficient Union-Find operations
+- **Large Graphs (20-30 vertices):** Prim's consistent O(E log V) performance becomes more noticeable
+- **XLarge Graphs (50-100 vertices):** Kruskal's O(E log E) sorting overhead becomes significant
+
 ## 1. Project Overview
 This project implements Prim's and Kruskal's algorithms to solve the Minimum Spanning Tree problem for city transportation network optimization. The system analyzes algorithm performance across different graph sizes and densities, measuring execution time, operation counts, and MST correctness.
 
