@@ -117,7 +117,7 @@ Execution time measurements (milliseconds) reveal clear performance patterns:
 | 14    | 14       | 36    | 0.069 ms  | 0.051 ms     | Kruskal | -26.1%     |
 | 15    | 11       | 22    | 0.048 ms  | 0.025 ms     | Kruskal | -47.9%     |
 
-### Large Graphs Analysis (22-31 vertices)  
+### Large Graphs Analysis (22-31 vertices)
 **Kruskal wins 9 out of 10 tests with average 19.8% speed improvement**
 
 | Graph | Vertices | Edges | Prim Time | Kruskal Time | Winner | Difference |
