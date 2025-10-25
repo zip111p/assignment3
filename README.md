@@ -2,7 +2,7 @@
 **Student:** Yelzhan Zhandos  
 **Group:** SE-2426
 
-## 📊 Performance Results & Analysis
+## Performance Results & Analysis
 
 ### Overall Performance Summary
 ![Performance Analysis](images/performance_analysis.png)
