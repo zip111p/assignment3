@@ -187,7 +187,7 @@ Execution time measurements (milliseconds) reveal clear performance patterns:
 
 ## 11. Project Structure and File Organization
 **Generated Files:**
-
+```
 MST-Transportation-Network/
 ├── inputs/
 │   └── ass_3_input.json      # 28 test graphs
@@ -196,5 +196,6 @@ MST-Transportation-Network/
 │   ├── comparison.csv        # Performance comparison table
 │   └── performance_analysis.csv # Detailed metrics
 └── src/                      # Source code
+```
 
 **Overall Success Rate:** 100% (28/28 graphs processed correctly)
