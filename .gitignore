@@ -1,0 +1,8 @@
+# Maven
+target/
+*.jar
+*.war
+*.ear
+
+# Compiled class files
+*.class
